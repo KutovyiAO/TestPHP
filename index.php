@@ -1,32 +1,28 @@
-<!DOCTYPE html>
-<html>
+<?php
+
+ require('connect.php');
 
 
-<head>
-    <meta charset="utf-8">
-    <title>Registration form</title>
-</head>
+?>
 
+<form method="post" action="index.php" >
 
-<body>
-
-<p>Введите регистрационные данные</p><br>
-
-<p>ID</p>
-<input name="text" >
+<input placeholder="id" name="id" type="number" value="<?php echo $id ?>"" >
+    <br>
+<input placeholder="name" name="name" type="text" value="<?php echo $name ?>">
 <br>
-<p>name</p>
-<input name="text" >
+<input  placeholder="description" name="description" type="text" value="<?php echo $description ?>">
 <br>
-<p>description</p>
-<input name="text" >
+<input  placeholder="created_at" name="created_at" type="text" value="<?php echo $created_at ?>" >
 <br>
-<p>created_at</p>
-<input name="text" >
+<input type="submit" name="Cоздать" value="<?php require_once 'Create.php'?>" >
+<input type="submit" name="Удалить" value="<?php require_once 'delete.php'?>" >
 
-</body>
+</form>
 
 
-</html>
+
+
+
 
 
