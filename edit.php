@@ -2,7 +2,6 @@
 
 require_once 'connect.php';
 
-
 $selectSQL=$connect->prepare('SELECT * FROM article  WHERE id=:id');
 $selectSQL->execute();
 
@@ -10,19 +9,28 @@ $result = $selectSQL->fetchAll();
 foreach ($result as $row);
 
 
-if (isset($_POST['delete']))
-{
+if (isset($_POST['update'])){
 
-    $deleteSQL=$connect->prepare('DELETE FROM article WHERE id = :id' );
-    $deleteSQL->execute();
+
+
+    $updateSQL=$connect->prepare('UPDATE article SET name=[:name],
+ description = [:description],
+  created_at = [:created_at]
+   WHERE id=:id' );
+    $updateSQL->execute(array(
+
+
+        ':name'=>$_POST['name'],
+        ':description'=>$_POST['description'],
+        ':created_at'=>$_POST['created_at']
+    ));
+
 
     header('location:index.php');
 }
 
 
-
 ?>
-
 
 <form method="POST">
 
@@ -36,10 +44,9 @@ if (isset($_POST['delete']))
 
     <!-- buttons-->
 
-    <input type="submit" name="delete" value="delete"  ><br>
+    <input type="submit" name="update" value="update"  ><br>
 
 
 </form>
-
 
 
