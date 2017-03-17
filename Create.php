@@ -5,34 +5,22 @@ require_once ('connect.php');
 ?>
 <?php
 
-function getPosts(){
+if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['created_at'])) {
 
-    $posts = array();
-    $posts[0]= $_POST['id'];
-    $posts[1]= $_POST['name'];
-    $posts[2]= $_POST['description'];
-    $posts[3]= $_POST['created_at'];
 
-    return $posts;
-}
-
-if (isset($_POST['create']))
-{
-    $data = getPosts();
-
-    if(empty($data[1]) && empty($data[2]) && empty($data[3])){
-        echo 'Введите данные';
-    } else (
 
     $createSQL=$connect->prepare('INSERT INTO article (name,description,created_at)
-                              VALUES (:name,:description,:created_at)' ));
+                              VALUES (:name,:description,:created_at)' );
     $createSQL->execute(array(
-        ':name'=>$data[1],
-        ':description'=>$data[2],
-        ':created_at'=>$data[3],
+
+
+        ':name'=>$_POST['name'],
+        ':description'=>$_POST['description'],
+        ':created_at'=>$_POST['created_at']
     ));
 
 
+    header('location:index.php');
 }
 
 
@@ -42,7 +30,6 @@ if (isset($_POST['create']))
 ?>
 <form method="POST" action="" >
 
-    <input placeholder="id" name="id" type="number" value="<?php echo  $id ?>"" >
     <br>
     <input placeholder="name" name="name" type="text" value="<?php echo $name ?>">
     <br>
@@ -55,9 +42,6 @@ if (isset($_POST['create']))
 
     <input type="submit" name="create" value="create"  ><br>
 
-    <input type="submit" name="delete" value="delete"  ><br>
-
-    <input type="submit" name="select" value="Select"   ><br>
 
 </form>
 

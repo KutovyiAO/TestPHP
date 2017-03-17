@@ -5,8 +5,10 @@ require_once 'connect.php';
 $selectSQL=$connect->prepare('SELECT * FROM article  WHERE id=:id');
 $selectSQL->execute();
 
-$result = $selectSQL->fetchAll();
-foreach ($result as $row);
+$result = $selectSQL->fetchALL();
+foreach ($result as $element) {
+
+};
 
 
 if (isset($_POST['update'])){
@@ -35,11 +37,11 @@ if (isset($_POST['update'])){
 <form method="POST">
 
     <br>
-    <input placeholder="name" name="name" type="text" value="<?php echo  $row['name']; ?>">
+    <input placeholder="name" name="name" type="text" value="<?php echo  $element['name']; ?>">
     <br>
-    <input  placeholder="description" name="description" type="text" value="<?php echo $row[':description']; ?>">
+    <input  placeholder="description" name="description" type="text" value="<?php echo $element[':description']; ?>">
     <br>
-    <input  placeholder="created_at" name="created_at" type="DATETIME" value="<?php echo $row[':created_at']; ?>" >
+    <input  placeholder="created_at" name="created_at" type="DATETIME" value="<?php echo $element[':created_at']; ?>" >
     <br>
 
     <!-- buttons-->
