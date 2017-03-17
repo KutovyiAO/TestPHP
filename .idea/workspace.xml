@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c095ed0-3e90-4d31-a4f7-996ca777badd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/delete.php" afterPath="$PROJECT_DIR$/delete.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/edit.php" afterPath="$PROJECT_DIR$/edit.php" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -258,7 +256,7 @@
       <workItem from="1489221447488" duration="7248000" />
       <workItem from="1489237341447" duration="9970000" />
       <workItem from="1489443637764" duration="129000" />
-      <workItem from="1489743504891" duration="7211000" />
+      <workItem from="1489743504891" duration="7326000" />
     </task>
     <task id="LOCAL-00001" summary="HTML first commit">
       <created>1488548804618</created>
@@ -295,11 +293,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489769202746</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="+++">
+      <created>1489771356127</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1489771356128</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69281000" />
+    <option name="totallyTimeSpent" value="69396000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -368,7 +373,8 @@
     <MESSAGE value="help commit" />
     <MESSAGE value="+edit + delete" />
     <MESSAGE value="++" />
-    <option name="LAST_COMMIT_MESSAGE" value="++" />
+    <MESSAGE value="+++" />
+    <option name="LAST_COMMIT_MESSAGE" value="+++" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
