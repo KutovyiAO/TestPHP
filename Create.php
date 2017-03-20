@@ -2,8 +2,6 @@
 
 require_once ('connect.php');
 
-?>
-<?php
 
 if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['created_at'])) {
 
@@ -23,19 +21,16 @@ if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['creat
     header('location:index.php');
 }
 
-
-
-
-
 ?>
-<form method="POST" action="" >
+
+<form method="POST" >
 
     <br>
-    <input placeholder="name" name="name" type="text" value="<?php echo $name ?>">
+    <input placeholder="name" name="name" type="text" >
     <br>
-    <input  placeholder="description" name="description" type="text" value="<?php echo $description ?>">
+    <input  placeholder="description" name="description" type="text">
     <br>
-    <input  placeholder="created_at" name="created_at" type="DATETIME" value="<?php echo $created_at ?>" >
+    <input  placeholder="created_at" name="created_at" type="DATETIME">
     <br>
 
     <!-- buttons-->
