@@ -1,26 +1,22 @@
 <?php
 
-require_once('connect.php');
 
+require_once '../Model/model.php';
 
 if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['created_at'])) {
 
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $created_at = $_POST['created_at'];
 
 
-    $createSQL=$connect->prepare('INSERT INTO article (name,description,created_at)
-                              VALUES (:name,:description,:created_at)' );
-    $createSQL->execute(array(
 
+    $createSQL = new ArticleCrud();
+    $data=$createSQL->create($name,$description,$created_at);
 
-        ':name'=>$_POST['name'],
-        ':description'=>$_POST['description'],
-        ':created_at'=>$_POST['created_at']
-    ));
-
-
-    header('location:index.php');
+    header('location:../View/index.php');
 }
 
-
+require_once '../View/createForm.php';
 
 

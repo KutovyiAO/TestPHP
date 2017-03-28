@@ -1,38 +1,29 @@
 <?php
 
-require_once('connect.php');
+require_once '../Model/model.php';
 
 
-if (isset($_GET['id']))
-$selectSQL=$connect->prepare('SELECT * FROM article  WHERE id=:id');
-$selectSQL->bindValue(':id', $_GET['id']);
-$selectSQL->execute();
+if (isset($_GET['id'])){
 
-$result = $selectSQL->fetchALL();
-foreach ($result as $element) {};
-//echo $element['name']. '-'. $element['description'].'-'.$element['created_at'];
+    $select = new ArticleCrud();
+    $select=$select->selectForEdit();
+
+}
+
+require_once '../View/editForm.php';
 
 
 
 if (!empty($_POST['update'])){
 
+$update = new ArticleCrud();
+$update = $update->update();
 
 
-    $updateSQL=$connect->prepare('UPDATE article SET name=:name,
- description = :description,
-  created_at = :created_at
-   WHERE id=:id');
-    $updateSQL->bindValue(':id', $_GET['id']);
-    $updateSQL->bindValue(':name', $_POST['name']);
-    $updateSQL->bindValue(':description', $_POST['description']);
-    $updateSQL->bindValue(':created_at', $_POST['created_at']);
 
-    $updateSQL->execute();
-
-
-    header('location:index.php');
+    header('location:../Controller/index.php');
 }
 
-
+require_once '../View/index.php';
 
 

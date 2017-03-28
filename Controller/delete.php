@@ -1,19 +1,14 @@
 <?php
 
-require_once('connect.php');
+require_once '../Model/model.php';
 
 if (isset($_GET['id']))
 {
 
-    $deleteSQL=$connect->prepare('DELETE FROM article WHERE id=:id');
+$delete = new ArticleCrud();
+$delete = $delete ->delete();
 
-    $deleteSQL->bindValue(':id', $_GET['id']);
-    $deleteSQL->execute();
-
-
-
-
-    header('location:index.php');
+    header('location:../View/index.php');
 }
 
 
