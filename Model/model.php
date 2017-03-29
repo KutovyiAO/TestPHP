@@ -21,17 +21,20 @@ class ArticleCrud {
 
 
     /**
+     * @param $name
+     * @param $description
+     * @param $created_at
      * @return PDOStatement
      */
-    public function create()
+    public function create($name, $description, $created_at)
     {
-        $CreateConnection=$this->getConnection();
-        $createSQL=$CreateConnection->prepare('INSERT INTO article (name,description,created_at)
+        $CreateConnection = $this->getConnection();
+        $createSQL = $CreateConnection->prepare('INSERT INTO article (name,description,created_at)
                               VALUES (:name,:description,:created_at)' );
 
-            $createSQL->bindValue(':name', $_POST['name']);
-            $createSQL->bindValue(':description', $_POST['description']);
-            $createSQL->bindValue(':created_at', $_POST['created_at']);
+            $createSQL->bindValue(':name', $name);
+            $createSQL->bindValue(':description', $description);
+            $createSQL->bindValue(':created_at', $created_at);
 
         $createSQL->execute();
 
@@ -40,16 +43,19 @@ class ArticleCrud {
 
 
     /**
-     *
+     * @param $id
+     * @return array
      */
-    public function selectForEdit()
+    public function selectForEdit($id)
     {
         $CreateConnection=$this->getConnection();
         $selectSQL=$CreateConnection->prepare('SELECT * FROM article  WHERE id=:id');
-        $selectSQL->bindValue(':id', $_GET['id']);
-        $selectSQL->execute();
+             $selectSQL->bindValue(':id', $id);
+             $selectSQL->execute();
 
         $result = $selectSQL->fetchALL();
+        return $result;
+
         foreach ($result as $element) {};
 
         require_once '../View/editForm.php';
@@ -58,38 +64,43 @@ class ArticleCrud {
 
 
     /**
-     *
+     * @param $id
+     * @param $name
+     * @param $description
+     * @param $created_at
+     * @return bool
      */
-    public function update()
+    public function update($id, $name, $description, $created_at)
     {
         $CreateConnection=$this->getConnection();
         $updateSQL=$CreateConnection->prepare('UPDATE article SET name=:name,
- description = :description,
-  created_at = :created_at
-   WHERE id=:id');
-        $updateSQL->bindValue(':id', $_GET['id']);
-        $updateSQL->bindValue(':name', $_POST['name']);
-        $updateSQL->bindValue(':description', $_POST['description']);
-        $updateSQL->bindValue(':created_at', $_POST['created_at']);
+                                                 description = :description,
+                                                  created_at = :created_at
+                                                   WHERE id=:id');
+            $updateSQL->bindValue(':id', $id);
+            $updateSQL->bindValue(':name', $name);
+            $updateSQL->bindValue(':description', $description);
+            $updateSQL->bindValue(':created_at', $created_at);
 
-        $updateSQL->execute();
+        $result = $updateSQL->execute();
+
+        return $result;
     }
 
 
     /**
-     *
+     * @param $id
+     * @return bool
      */
-    public function delete()
+    public function delete($id)
     {
         $CreateConnection=$this->getConnection();
         $deleteSQL=$CreateConnection->prepare('DELETE FROM article WHERE id=:id');
 
-        $deleteSQL->bindValue(':id', $_GET['id']);
-        $deleteSQL->execute();
+        $deleteSQL->bindValue(':id', $id);
+        $result = $deleteSQL->execute();
 
-
+        return $result;
     }
-
-
 
 }

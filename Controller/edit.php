@@ -1,29 +1,23 @@
 <?php
 
-require_once '../Model/model.php';
-
+    require_once '../Model/model.php';
 
 if (isset($_GET['id'])){
 
     $select = new ArticleCrud();
-    $select=$select->selectForEdit();
-
+    $select = $select->selectForEdit($_GET['id']);
 }
 
-require_once '../View/editForm.php';
+    require_once '../View/editForm.php';
 
-
-
-if (!empty($_POST['update'])){
+if (!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['created_at']) ){
 
 $update = new ArticleCrud();
-$update = $update->update();
-
-
+$update = $update->update($_GET['id'], $_POST['name'], $_POST['description'], $_POST['created_at']);
 
     header('location:../Controller/index.php');
 }
 
-require_once '../Controller/index.php';
+    require_once '../Controller/index.php';
 
 
