@@ -1,5 +1,5 @@
 
-<form method="POST" action="../Controller/edit.php">
+<form method="POST" >
 
     <br>
     <input placeholder="name" name="name" type="text" value="<?php echo  $element['name']; ?>">

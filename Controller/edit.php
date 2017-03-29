@@ -24,6 +24,6 @@ $update = $update->update();
     header('location:../Controller/index.php');
 }
 
-require_once '../View/index.php';
+require_once '../Controller/index.php';
 
 

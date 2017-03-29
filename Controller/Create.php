@@ -14,7 +14,7 @@ if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['creat
     $createSQL = new ArticleCrud();
     $data=$createSQL->create($name,$description,$created_at);
 
-    header('location:../View/index.php');
+    header('location:../Controller/index.php');
 }
 
 require_once '../View/createForm.php';

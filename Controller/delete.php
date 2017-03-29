@@ -8,7 +8,7 @@ if (isset($_GET['id']))
 $delete = new ArticleCrud();
 $delete = $delete ->delete();
 
-    header('location:../View/index.php');
+    header('location:../Controller/index.php');
 }
 
 

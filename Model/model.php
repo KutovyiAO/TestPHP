@@ -52,6 +52,8 @@ class ArticleCrud {
         $result = $selectSQL->fetchALL();
         foreach ($result as $element) {};
 
+        require_once '../View/editForm.php';
+
     }
 
 
@@ -74,7 +76,9 @@ class ArticleCrud {
     }
 
 
-
+    /**
+     *
+     */
     public function delete()
     {
         $CreateConnection=$this->getConnection();
