@@ -2,10 +2,10 @@
 
 class ArticleCrud {
 
-    private $host = 'localhost';
-    private $dbname = 'CRUDtest';
-    private $uname = 'root';
-    private $password = '4045487';
+    private $host        = 'localhost';
+    private $dbname      = 'CRUDtest';
+    private $uname       = 'root';
+    private $password    = '4045487';
 
 
     /**
@@ -16,6 +16,21 @@ class ArticleCrud {
         $connect = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname, $this->uname, $this->password);
 
         return $connect;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function post()
+    {
+         $con = $this->getConnection();
+         $selectSQL = $con->prepare('SELECT * FROM article ');
+         $selectSQL->execute();
+
+         $result=$selectSQL->fetchAll();
+
+         return $result;
     }
 
 
@@ -35,7 +50,7 @@ class ArticleCrud {
             $createSQL->bindValue(':description', $description);
             $createSQL->bindValue(':created_at', $created_at);
 
-        $result=$createSQL->execute();
+        $result = $createSQL->execute();
 
         return $result;
     }
@@ -47,8 +62,8 @@ class ArticleCrud {
      */
     public function selectForEdit($id)
     {
-        $CreateConnection=$this->getConnection();
-        $selectSQL=$CreateConnection->prepare('SELECT * FROM article  WHERE id=:id');
+        $CreateConnection = $this->getConnection();
+             $selectSQL = $CreateConnection->prepare('SELECT * FROM article  WHERE id=:id');
              $selectSQL->bindValue(':id', $id);
              $selectSQL->execute();
 
@@ -67,8 +82,8 @@ class ArticleCrud {
      */
     public function update($id, $name, $description, $created_at)
     {
-        $CreateConnection=$this->getConnection();
-        $updateSQL=$CreateConnection->prepare('UPDATE article SET name=:name,
+        $CreateConnection = $this->getConnection();
+        $updateSQL = $CreateConnection->prepare('UPDATE article SET name=:name,
                                                  description = :description,
                                                   created_at = :created_at
                                                    WHERE id=:id');
@@ -89,10 +104,10 @@ class ArticleCrud {
      */
     public function delete($id)
     {
-        $CreateConnection=$this->getConnection();
-        $deleteSQL=$CreateConnection->prepare('DELETE FROM article WHERE id=:id');
-
+        $CreateConnection = $this->getConnection();
+        $deleteSQL = $CreateConnection->prepare('DELETE FROM article WHERE id=:id');
         $deleteSQL->bindValue(':id', $id);
+
         $result = $deleteSQL->execute();
 
         return $result;

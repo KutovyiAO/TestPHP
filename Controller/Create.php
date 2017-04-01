@@ -1,6 +1,5 @@
 <?php
 
-
 require_once '../Model/ArticleCrud.php';
 require_once '../View/createForm.php';
 

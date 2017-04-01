@@ -1,15 +1,13 @@
 <?php
 
-    require_once('../Model/ArticleCrud.php');
+    require_once'../Model/ArticleCrud.php';
 
 $model     = new ArticleCrud();
-$connect   = $model->getConnection();
-$selectSQL = $connect->prepare('SELECT * FROM article ');
-$selectSQL->execute();
-
-$data=$selectSQL->fetchAll();
+$post_All = $model->post();
 
     require_once '../View/index.php';
+
+
 
 
 
