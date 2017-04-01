@@ -6,5 +6,4 @@ echo $row['name']. '-'. $row['description'].'-'.$row['created_at'].'
 <a href="create.php?id='.$row['id'] .'">Create</a>
 <a href="delete.php?id='.$row['id'] .'">Delete</a><br>';
 
-
 }

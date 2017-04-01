@@ -1,12 +1,12 @@
 
-<form method="POST" >
+<form method="POST" action="../Controller/edit.php" >
 
     <br>
-    <input placeholder="name" name="name" type="text" value="<?php echo  $element['name']; ?>">
+    <input placeholder="name" name="name" type="text" value="<?php echo  $editSQL['name']; ?>">
     <br>
-    <input  placeholder="description" name="description" type="text" value="<?php echo $element['description']; ?>">
+    <input  placeholder="description" name="description" type="text" value="<?php echo $editSQL['description']; ?>">
     <br>
-    <input  placeholder="created_at" name="created_at" type="DATETIME" value="<?php echo $element['created_at']; ?>" >
+    <input  placeholder="created_at" name="created_at" type="DATETIME" value="<?php echo $editSQL['created_at']; ?>" >
     <br>
 
     <!-- buttons-->

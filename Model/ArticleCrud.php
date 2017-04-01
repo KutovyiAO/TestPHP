@@ -2,7 +2,6 @@
 
 class ArticleCrud {
 
-
     private $host = 'localhost';
     private $dbname = 'CRUDtest';
     private $uname = 'root';
@@ -36,9 +35,9 @@ class ArticleCrud {
             $createSQL->bindValue(':description', $description);
             $createSQL->bindValue(':created_at', $created_at);
 
-        $createSQL->execute();
+        $result=$createSQL->execute();
 
-        return $createSQL;
+        return $result;
     }
 
 
@@ -53,12 +52,9 @@ class ArticleCrud {
              $selectSQL->bindValue(':id', $id);
              $selectSQL->execute();
 
-        $result = $selectSQL->fetchALL();
+        $result = $selectSQL->fetch();
 
-        foreach ($result as $element) {};
-
-        require_once '../View/editForm.php';
-
+     return $result;
     }
 
 

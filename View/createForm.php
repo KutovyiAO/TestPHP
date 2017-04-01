@@ -6,8 +6,6 @@
     <br>
     <input  placeholder="description" name="description" type="text">
     <br>
-    <input  placeholder="created_at" name="created_at" type="DATETIME">
-    <br>
 
     <!-- buttons-->
 
