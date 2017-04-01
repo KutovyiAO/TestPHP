@@ -54,7 +54,6 @@ class ArticleCrud {
              $selectSQL->execute();
 
         $result = $selectSQL->fetchALL();
-        return $result;
 
         foreach ($result as $element) {};
 
